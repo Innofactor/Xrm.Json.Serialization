@@ -287,3 +287,5 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 /src/AkavacheLiteApp
+/src/AkavacheLite/push-package.ps1
+/src/AkavacheLite/nuget.exe
