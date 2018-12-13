@@ -4,27 +4,27 @@
     using Microsoft.Xrm.Sdk;
     using Newtonsoft.Json;
 
-    public class OptionSetConvertor : JsonConverter
+    public class MoneyConverter : JsonConverter
     {
         #region Public Methods
 
         public override bool CanConvert(Type objectType) =>
-            objectType == typeof(OptionSetValue);
+            objectType == typeof(Money);
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             reader.Read();
-            var value = (int)reader.ReadAsInt32();
+            var value = (int)reader.ReadAsDecimal();
             reader.Read();
 
-            return new OptionSetValue(value);
+            return new Money(value);
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             writer.WriteStartObject();
-            writer.WritePropertyName("_option");
-            writer.WriteValue((value as OptionSetValue).Value);
+            writer.WritePropertyName("_money");
+            writer.WriteValue((value as Money).Value);
             writer.WriteEndObject();
         }
 

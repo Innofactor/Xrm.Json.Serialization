@@ -4,7 +4,7 @@
     using Newtonsoft.Json;
     using Xunit;
 
-    public class OptionSetValueTests
+    public class OptionSetValueConverterTests
     {
         #region Public Methods
 
