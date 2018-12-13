@@ -14,7 +14,7 @@
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             reader.Read();
-            var value = (int)reader.ReadAsDecimal();
+            var value = (decimal)reader.ReadAsDecimal();
             reader.Read();
 
             return new Money(value);
