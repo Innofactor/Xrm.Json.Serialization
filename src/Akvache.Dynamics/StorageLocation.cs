@@ -1,4 +1,4 @@
-﻿namespace AkavacheLite.Dynamics
+﻿namespace Akavache.Dynamics
 {
     public enum StorageLocation
     {

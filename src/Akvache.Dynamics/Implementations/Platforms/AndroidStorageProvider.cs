@@ -1,8 +1,8 @@
-﻿namespace AkavacheLite.Dynamics.Implementations.Platforms
+﻿namespace Akavache.Dynamics.Implementations.Platforms
 {
     using System;
     using System.IO;
-    using AkavacheLite.Dynamics.Interfaces;
+    using Akavache.Dynamics.Interfaces;
 
     public class AndroidStorageProvider : IStorageProvider
     {

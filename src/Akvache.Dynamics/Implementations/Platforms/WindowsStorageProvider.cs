@@ -1,7 +1,7 @@
-﻿namespace AkavacheLite.Dynamics.Implementations.Platforms
+﻿namespace Akavache.Dynamics.Implementations.Platforms
 {
     using System;
-    using AkavacheLite.Dynamics.Interfaces;
+    using Akavache.Dynamics.Interfaces;
 
     public class WindowsStorageProvider : IStorageProvider
     {

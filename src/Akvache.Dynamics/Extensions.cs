@@ -1,7 +1,7 @@
-﻿namespace AkavacheLite.Dynamics
+﻿namespace Akavache.Dynamics
 {
     using System;
-    using AkavacheLite.Dynamics.Interfaces;
+    using Akavache.Dynamics.Interfaces;
 
     public static class Extensions
     {

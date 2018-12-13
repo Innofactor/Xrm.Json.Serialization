@@ -1,9 +1,9 @@
-﻿namespace AkavacheLite.Dynamics
+﻿namespace Akavache.Dynamics
 {
     using System;
     using System.Linq;
-    using AkavacheLite.Dynamics.Implementations;
-    using AkavacheLite.Dynamics.Interfaces;
+    using Akavache.Dynamics.Implementations;
+    using Akavache.Dynamics.Interfaces;
 
     // based on the excelent work of Akavache
     public static class BlobCache

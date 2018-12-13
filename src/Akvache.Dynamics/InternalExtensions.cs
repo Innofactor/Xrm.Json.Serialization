@@ -1,8 +1,8 @@
-﻿namespace AkavacheLite.Dynamics
+﻿namespace Akavache.Dynamics
 {
     using System.Collections.Generic;
     using System.Linq;
-    using AkavacheLite.Dynamics.Interfaces;
+    using Akavache.Dynamics.Interfaces;
 
     internal static class InternalExtensions
     {

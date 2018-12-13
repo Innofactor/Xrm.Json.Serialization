@@ -83,7 +83,7 @@
     <Compile Include="Implementations\PersistentBlobCache.cs" />
     <Compile Include="Implementations\Platforms\AndroidStorageProvider.cs" />
     <Compile Include="Implementations\Platforms\AppleiOSStorageProvider.cs" />
-    <Compile Include="Implementations\Platforms\EntityDictionary.cs" />
+    <Compile Include="Implementations\EntityDictionary.cs" />
     <Compile Include="Implementations\Platforms\GenericApplicationStorageProvider.cs" />
     <Compile Include="Implementations\Platforms\WindowsStorageProvider.cs" />
     <Compile Include="Interfaces\IBlobCache.cs" />

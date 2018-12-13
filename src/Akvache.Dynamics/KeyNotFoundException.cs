@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AkavacheLite.Dynamics
+namespace Akavache.Dynamics
 {
     public class KeyNotFoundException : Exception
     {
