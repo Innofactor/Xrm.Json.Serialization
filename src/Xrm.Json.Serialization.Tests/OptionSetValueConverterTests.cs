@@ -9,30 +9,31 @@
         #region Public Methods
 
         [Fact]
-        public void Can_Serialize_OptionSet()
-        {
-            // Arrange
-            var optionSet = new OptionSetValue(100);
-
-            // Act
-            var result = JsonConvert.SerializeObject(optionSet, Formatting.None, new OptionSetConvertor());
-
-            // Assert
-            Assert.Equal("{\"_option\":100}", result);
-        }
-
-        [Fact]
         public void Can_Deserialize_OptionSet()
         {
             // Arrange
-            var optionSet = new OptionSetValue(100);
             var value = "{\"_option\":100}";
+            var expected = new OptionSetValue(100);
 
             // Act
-            var result = JsonConvert.DeserializeObject<OptionSetValue>(value, new OptionSetConvertor());
+            var actual = JsonConvert.DeserializeObject<OptionSetValue>(value, new OptionSetConvertor());
 
             // Assert
-            Assert.Equal(optionSet.Value, result.Value);
+            Assert.Equal(expected.Value, actual.Value);
+        }
+
+        [Fact]
+        public void Can_Serialize_OptionSet()
+        {
+            // Arrange
+            var value = new OptionSetValue(100);
+            var expected = "{\"_option\":100}";
+
+            // Act
+            var actual = JsonConvert.SerializeObject(value, Formatting.None, new OptionSetConvertor());
+
+            // Assert
+            Assert.Equal(expected, actual);
         }
 
         #endregion Public Methods

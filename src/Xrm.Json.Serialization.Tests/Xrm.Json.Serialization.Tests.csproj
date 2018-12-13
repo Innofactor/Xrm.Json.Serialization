@@ -78,6 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityReferenceConverterTests.cs" />
     <Compile Include="MoneyConverterTests.cs" />
     <Compile Include="OptionSetValueConverterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

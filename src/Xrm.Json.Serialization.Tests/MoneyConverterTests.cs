@@ -16,7 +16,7 @@
             var value = "{\"_money\":9.95}";
 
             // Act
-            var result = JsonConvert.DeserializeObject<OptionSetValue>(value, new MoneyConverter());
+            var result = JsonConvert.DeserializeObject<Money>(value, new MoneyConverter());
 
             // Assert
             Assert.Equal(optionSet.Value, result.Value);
@@ -26,13 +26,14 @@
         public void Can_Serialize_Money()
         {
             // Arrange
-            var optionSet = new Money(9.95m);
+            var value = new Money(9.95m);
+            var expected = "{\"_money\":9.95}";
 
             // Act
-            var result = JsonConvert.SerializeObject(optionSet, Formatting.None, new MoneyConverter());
+            var actual = JsonConvert.SerializeObject(value, Formatting.None, new MoneyConverter());
 
             // Assert
-            Assert.Equal("{\"_money\":9.95}", result);
+            Assert.Equal(expected, actual);
         }
 
         #endregion Public Methods
