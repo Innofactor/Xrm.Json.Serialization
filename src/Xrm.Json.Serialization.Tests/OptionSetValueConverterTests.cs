@@ -9,7 +9,7 @@
         #region Public Methods
 
         [Fact]
-        public void Can_Deserialize_OptionSet()
+        public void OptionSetValue_Can_Deserialize()
         {
             // Arrange
             var value = "{\"_option\":100}";
@@ -23,7 +23,7 @@
         }
 
         [Fact]
-        public void Can_Serialize_OptionSet()
+        public void OptionSetValue_Can_Serialize()
         {
             // Arrange
             var value = new OptionSetValue(100);

@@ -10,7 +10,7 @@
         #region Public Methods
 
         [Fact]
-        public void Can_Deserialize_EntityReference()
+        public void EntityReference_Can_Deserialize()
         {
             // Arrange
             var name = "test";
@@ -27,7 +27,7 @@
         }
 
         [Fact]
-        public void Can_Serialize_EntityReference()
+        public void EntityReference_Can_Serialize()
         {
             // Arrange
             var name = "test";
