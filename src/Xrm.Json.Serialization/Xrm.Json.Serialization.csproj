@@ -66,6 +66,7 @@
     <Compile Include="MoneyConverter.cs" />
     <Compile Include="OptionSetValueConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XrmContractResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
