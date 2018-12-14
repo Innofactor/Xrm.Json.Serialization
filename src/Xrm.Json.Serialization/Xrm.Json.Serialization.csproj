@@ -61,6 +61,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityConverter.cs" />
+    <Compile Include="EntityReferenceConverter.cs" />
     <Compile Include="MoneyConverter.cs" />
     <Compile Include="OptionSetValueConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
