@@ -7,19 +7,6 @@
 
     public class EntityConverterTests
     {
-        //public EntityConverterTests()
-        //{
-        //    JsonConvert.DefaultSettings = () => new JsonSerializerSettings
-        //    {
-        //        Converters = new List<JsonConverter>
-        //        {
-        //            new EntityReferenceConverter(),
-        //            new MoneyConverter(),
-        //            new OptionSetConvertor()
-        //        }
-        //    };
-        //}
-
         #region Public Methods
 
         [Fact]
@@ -29,6 +16,7 @@
             var name = "test";
             var id = Guid.NewGuid();
             var expected = new Entity(name, id);
+            expected.Attributes.Add("attribute1", new OptionSetValue(1));
             var value = $"{{\"_reference\":\"{name}:{id.ToString()}\",\"attribute1\":{{\"_option\":1}}}}"; ;
 
             // Act
@@ -37,7 +25,7 @@
             // Assert
             Assert.Equal(expected.LogicalName, actual.LogicalName);
             Assert.Equal(expected.Id, actual.Id);
-            Assert.Equal((expected.Attributes["atrribute1"] as OptionSetValue).Value, (actual.Attributes["attribute1"] as OptionSetValue).Value);
+            Assert.Equal((expected.Attributes["attribute1"] as OptionSetValue).Value, (actual.Attributes["attribute1"] as OptionSetValue).Value);
         }
 
         [Fact]

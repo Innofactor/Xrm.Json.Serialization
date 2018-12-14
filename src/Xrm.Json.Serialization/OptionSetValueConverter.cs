@@ -14,10 +14,10 @@
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             reader.Read();
-            var value = (int)reader.ReadAsInt32();
+            var value = new OptionSetValue((int)reader.ReadAsInt32());
             reader.Read();
 
-            return new OptionSetValue(value);
+            return value;
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)

@@ -3,6 +3,7 @@
     using System;
     using Microsoft.Xrm.Sdk;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     public class EntityConverter : JsonConverter
     {
@@ -13,9 +14,57 @@
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            serializer.ContractResolver = new XrmContractResolver();
+            reader.Read();
 
-            throw new NotImplementedException();
+            var reference = EntityReferenceConverter.GetReference(reader);
+            var entity = new Entity(reference.LogicalName, reference.Id);
+
+            while (reader.Read())
+            {
+                // Reading attribute name
+                var key = reader.Value.ToString();
+                var value = default(object);
+
+                // Noving to next token
+                reader.Read();
+                if (reader.TokenType == JsonToken.StartObject)
+                {
+                    // Skipping to first property of the object
+                    reader.Read();
+
+                    switch(reader.Value)
+                    {
+                        case "_option":
+                            // Skipping to property value of the object
+                            value = new OptionSetValue((int)reader.ReadAsInt32());
+                            reader.Read();
+                            break;
+
+                        case "_reference":
+                            // Skipping to property value of the object
+                            value = EntityReferenceConverter.GetReference(reader);
+                            reader.Read();
+                            break;
+
+                        case "_money":
+                            // Skipping to property value of the object
+                            value = new Money((decimal)reader.ReadAsDecimal());
+                            reader.Read();
+                            break;
+                    }
+                }
+                else
+                {
+                    value = serializer.Deserialize(reader);
+                }
+
+                entity.Attributes.Add(key, value);
+                
+                // Skipping closing object definition
+                reader.Read();
+            }
+
+            return entity;
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)

@@ -14,10 +14,10 @@
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             reader.Read();
-            var value = (decimal)reader.ReadAsDecimal();
+            var value = new Money((decimal)reader.ReadAsDecimal());
             reader.Read();
 
-            return new Money(value);
+            return value;
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)

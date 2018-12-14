@@ -14,20 +14,12 @@
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             reader.Read();
-            var chunks = reader.ReadAsString().Split(':');
-            var name = string.Empty;
-            var id = Guid.Empty;
-
-            if (chunks.Length > 1)
-            {
-                name = chunks[0];
-                Guid.TryParse(chunks[1], out id);
-            }
-
+            var value = GetReference(reader);
             reader.Read();
 
-            return new EntityReference(name, id);
+            return value;
         }
+            
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
@@ -40,5 +32,24 @@
         }
 
         #endregion Public Methods
+
+        #region Internal Methods
+
+        internal static EntityReference GetReference(JsonReader reader)
+        {
+            var chunks = reader.ReadAsString().Split(':');
+            var name = string.Empty;
+            var id = Guid.Empty;
+
+            if (chunks.Length > 1)
+            {
+                name = chunks[0];
+                Guid.TryParse(chunks[1], out id);
+            }
+
+            return new EntityReference(name, id);
+        }
+
+        #endregion Internal Methods
     }
 }
