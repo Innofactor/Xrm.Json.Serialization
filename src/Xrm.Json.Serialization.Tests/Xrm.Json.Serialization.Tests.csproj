@@ -79,12 +79,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityReferenceConverterTests.cs" />
+    <Compile Include="EntityConverterTests.cs" />
     <Compile Include="MoneyConverterTests.cs" />
     <Compile Include="OptionSetValueConverterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="xunit.runner.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
