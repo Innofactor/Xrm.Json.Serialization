@@ -19,11 +19,13 @@
         public XrmContractResolver()
         {
             converters = new Dictionary<Type, JsonConverter>()
-                {
-                    { typeof(EntityReference), new EntityReferenceConverter() },
-                    { typeof(Money), new MoneyConverter() },
-                    { typeof(OptionSetValue), new OptionSetConvertor()}
-                };
+            {
+                { typeof(EntityCollection), new EntityCollectionConverter() },
+                { typeof(Entity), new EntityConverter() },
+                { typeof(EntityReference), new EntityReferenceConverter() },
+                { typeof(Money), new MoneyConverter() },
+                { typeof(OptionSetValue), new OptionSetConvertor()}
+            };
         }
 
         #endregion Public Constructors

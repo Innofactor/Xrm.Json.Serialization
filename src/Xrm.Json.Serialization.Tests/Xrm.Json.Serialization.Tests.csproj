@@ -78,6 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityCollectionConverterTests.cs" />
     <Compile Include="EntityReferenceConverterTests.cs" />
     <Compile Include="EntityConverterTests.cs" />
     <Compile Include="MoneyConverterTests.cs" />

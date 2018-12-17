@@ -3,7 +3,6 @@
     using System;
     using Microsoft.Xrm.Sdk;
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
 
     public class EntityConverter : JsonConverter
     {
@@ -19,7 +18,9 @@
             var reference = EntityReferenceConverter.GetReference(reader);
             var entity = new Entity(reference.LogicalName, reference.Id);
 
-            while (reader.Read())
+            reader.Read();
+
+            while (reader.TokenType != JsonToken.EndObject)
             {
                 // Reading attribute name
                 var key = reader.Value.ToString();
@@ -32,7 +33,7 @@
                     // Skipping to first property of the object
                     reader.Read();
 
-                    switch(reader.Value)
+                    switch (reader.Value)
                     {
                         case "_option":
                             // Skipping to property value of the object
@@ -59,7 +60,7 @@
                 }
 
                 entity.Attributes.Add(key, value);
-                
+
                 // Skipping closing object definition
                 reader.Read();
             }
