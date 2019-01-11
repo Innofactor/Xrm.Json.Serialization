@@ -95,7 +95,7 @@
     <Analyzer Include="..\packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Xrm.Json.Serialization\Innofactor.Xrm.Json.Serialization.csproj">
+    <ProjectReference Include="..\Innofactor.Xrm.Json.Serialization\Innofactor.Xrm.Json.Serialization.csproj">
       <Project>{19d18e8d-e967-4cbe-8822-617bd1feeaa4}</Project>
       <Name>Innofactor.Xrm.Json.Serialization</Name>
     </ProjectReference>
