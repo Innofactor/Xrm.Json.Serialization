@@ -1,4 +1,4 @@
-﻿namespace Xrm.Json.Serialization
+﻿namespace Innofactor.Xrm.Json.Serialization
 {
     using System;
     using System.Collections.Generic;

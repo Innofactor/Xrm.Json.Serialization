@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using Innofactor.Xrm.Json.Serialization;
     using Microsoft.Xrm.Sdk;
     using Newtonsoft.Json;
     using Xunit;
