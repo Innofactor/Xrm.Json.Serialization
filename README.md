@@ -1,2 +1,2 @@
-# AkavacheLite
-All of the fun of Akavache without the reactive extensions
+# Xrm.Persistent.Collections
+Forked from https://github.com/HeathHopkins/AkavacheLite
