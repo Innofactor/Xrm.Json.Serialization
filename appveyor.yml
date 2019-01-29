@@ -5,8 +5,8 @@ before_build:
 - cmd: nuget restore
 build:
   parallel: true
-  verbosity: detailed
+  verbosity: minimal
 after_build:
-- cmd: cd && nuget pack src\Innofactor.Xrm.Json.Serialization\Innofactor.Xrm.Json.Serialization.csproj -Properties Configuration=Release -Verbosity Detailed -Version %APPVEYOR_BUILD_VERSION%
+- cmd: tree /a && nuget pack src\Innofactor.Xrm.Json.Serialization\Innofactor.Xrm.Json.Serialization.csproj -Properties Configuration=Release -Verbosity Detailed -Version %APPVEYOR_BUILD_VERSION%
 artifacts:
 - path: '*.nupkg'
