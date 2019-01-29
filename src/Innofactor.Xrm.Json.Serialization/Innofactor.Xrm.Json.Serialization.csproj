@@ -7,8 +7,8 @@
     <ProjectGuid>{19D18E8D-E967-4CBE-8822-617BD1FEEAA4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Xrm.Json.Serialization</RootNamespace>
-    <AssemblyName>Xrm.Json.Serialization</AssemblyName>
+    <RootNamespace>Innofactor.Xrm.Json.Serialization</RootNamespace>
+    <AssemblyName>Innofactor.Xrm.Json.Serialization</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
