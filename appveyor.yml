@@ -7,6 +7,6 @@ build:
   parallel: true
   verbosity: minimal
 after_build:
-- cmd: dir src\Innofactor.Xrm.Json.Serialization\bin\Release\ && nuget pack src\Innofactor.Xrm.Json.Serialization\Innofactor.Xrm.Json.Serialization.csproj -Version %APPVEYOR_BUILD_VERSION%
+- cmd: dir src\Innofactor.Xrm.Json.Serialization\bin\Release\ && nuget pack src\Innofactor.Xrm.Json.Serialization\Innofactor.Xrm.Json.Serialization.csproj -Build -Version %APPVEYOR_BUILD_VERSION%
 artifacts:
-- path: '*.nupkg'
+- path: '*.nupkg' 
