@@ -7,7 +7,7 @@
     <authors>Alexey Shytikov</authors>
     <owners>Innofactor AB</owners>
     <projectUrl>https://github.com/Innofactor/Xrm.Persistent.Collections</projectUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
     <description>Compact JSON serialization for Microsoft Dynamics CRM entities</description>
     <copyright>Copyright © Innofactor AB 2019</copyright>
