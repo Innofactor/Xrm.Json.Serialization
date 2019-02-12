@@ -2,12 +2,12 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Xrm.Json.Serialization.Tests")]
+[assembly: AssemblyTitle("Innofactor.Xrm.Json.Serialization.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Xrm.Json.Serialization.Tests")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyProduct("Innofactor.Xrm.Json.Serialization.Tests")]
+[assembly: AssemblyCopyright("Copyright © Innofactor AB 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
