@@ -33,7 +33,7 @@
                     // Skipping to first property of the object
                     reader.Read();
 
-                    switch (reader.Value.ToString())
+                    switch (reader.Value)
                     {
                         case "_option":
                             // Skipping to property value of the object
