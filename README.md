@@ -4,7 +4,7 @@ Library provides simple JSON serialization / deserialization functionality that 
 
 To enable MS Dynamics CRM specific rules, custom JSON.NET converters need to be registered before performing serialization / deserialization:
 
-```
+```c#
 JsonConvert.DefaultSettings = () => new JsonSerializerSettings
 {
     Converters = new List<JsonConverter>()
@@ -20,19 +20,18 @@ JsonConvert.DefaultSettings = () => new JsonSerializerSettings
 
 When all custom converters are registered, it's possible to supply entity to the JSON.NET engine:
 
-```
+```c#
 // Creating dummy entity with one OptionSet attribute
 var entity = new Entity("test", Guid.NewGuid());
 entity.Attributes.Add("attribute1", new OptionSetValue(1));
 
 // Performing conversion
 var json = JsonConvert.SerializeObject(entity, Formatting.Indented);
-
 ```
 
 Resulting JSON will look like following:
 
-```
+```json
 {
   "_reference": "test:16118a60-4346-46ab-8cf7-7e2bd9233b2f",
   "attribute1": {
