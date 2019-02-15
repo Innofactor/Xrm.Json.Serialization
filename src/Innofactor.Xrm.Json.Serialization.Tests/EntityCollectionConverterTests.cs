@@ -1,10 +1,6 @@
 ﻿namespace Xrm.Json.Serialization.Tests
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Innofactor.Xrm.Json.Serialization;
     using Microsoft.Xrm.Sdk;
     using Newtonsoft.Json;
@@ -12,6 +8,8 @@
 
     public class EntityCollectionConverterTests
     {
+        #region Public Methods
+
         [Fact]
         public void EntityCollection_Can_Deserialize()
         {
@@ -52,5 +50,7 @@
             // Assert
             Assert.Equal(expected, actual);
         }
+
+        #endregion Public Methods
     }
 }
