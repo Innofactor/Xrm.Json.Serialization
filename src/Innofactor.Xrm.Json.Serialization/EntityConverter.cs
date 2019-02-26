@@ -52,6 +52,30 @@
                             value = new Money((decimal)reader.ReadAsDecimal());
                             reader.Read();
                             break;
+
+                        case "_String":
+                            // Skipping to property value of the object
+                            value = reader.ReadAsString();
+                            reader.Read();
+                            break;
+
+                        case "_Int32":
+                            // Skipping to property value of the object
+                            value = (int)reader.ReadAsInt32();
+                            reader.Read();
+                            break;
+
+                        case "_Guid":
+                            // Skipping to property value of the object
+                            value = new Guid(reader.ReadAsString());
+                            reader.Read();
+                            break;
+
+                        case "_Double":
+                            // Skipping to property value of the object
+                            value = (double)reader.ReadAsDouble();
+                            reader.Read();
+                            break;
                     }
                 }
                 else

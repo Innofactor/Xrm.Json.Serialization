@@ -78,11 +78,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CombinedTypesTests.cs" />
     <Compile Include="EntityCollectionConverterTests.cs" />
     <Compile Include="EntityReferenceConverterTests.cs" />
     <Compile Include="EntityConverterTests.cs" />
     <Compile Include="MoneyConverterTests.cs" />
     <Compile Include="OptionSetValueConverterTests.cs" />
+    <Compile Include="BasicsConverterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
