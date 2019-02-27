@@ -34,15 +34,15 @@
 
         protected override JsonConverter ResolveContractConverter(Type objectType)
         {
-            //     converters[objectType];
             if (!converters.TryGetValue(objectType, out var matchingConverter))
             {
                 return new BasicsConverter();
             }
 
             return matchingConverter;
-        }           
+        }
 
         #endregion Protected Methods
+
     }
 }

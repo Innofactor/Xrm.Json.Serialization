@@ -1,7 +1,6 @@
 ﻿namespace Innofactor.Xrm.Json.Serialization
 {
     using System;
-    using System.Globalization;
     using Newtonsoft.Json;
 
     public class BasicsConverter : JsonConverter
@@ -12,8 +11,11 @@
         {
             return objectType == typeof(string)
                 || objectType == typeof(int)
+                || objectType == typeof(long)
+                || objectType == typeof(float)
                 || objectType == typeof(double)
-                || objectType == typeof(Guid);
+                || objectType == typeof(decimal)
+                || objectType == typeof(object);
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
@@ -30,27 +32,32 @@
                 return Finish(reader, (int)reader.ReadAsInt32());
             }
 
+            if (objectType == typeof(long))
+            {
+                return Finish(reader, long.Parse(reader.ReadAsString()));
+            }
+
+            if (objectType == typeof(float))
+            {
+                return Finish(reader, float.Parse(reader.ReadAsString()));
+            }
+
             if (objectType == typeof(double))
             {
                 return Finish(reader, (double)reader.ReadAsDouble());
             }
 
-            if (objectType == typeof(Guid))
+            if (objectType == typeof(decimal))
             {
-                return Finish(reader, new Guid(reader.ReadAsString()));
+                return Finish(reader, (decimal)reader.ReadAsDecimal());
             }
 
-            // Default to string rep
-            return Finish(reader, reader.ReadAsString());
+            // Default to object rep
+            reader.Read();
+            return Finish(reader, reader.Value);
         }
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            writer.WriteStartObject();
-            writer.WritePropertyName($"_{value.GetType().Name}");
-            writer.WriteValue(Convert.ToString(value).Replace(',', '.')); // Deserialization will fail if decimal commas are used
-            writer.WriteEndObject();
-        }
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => writer.WriteValue(JsonConvert.SerializeObject(value));
 
         #endregion Public Methods
 
@@ -61,7 +68,6 @@
             reader.Read();
             return value;
         }
-
 
         #endregion Private Methods
     }
