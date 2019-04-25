@@ -27,7 +27,7 @@
         {
             // Arrange
             var value = 0.1234567890m;
-            var expected = "\"0.1234567890\"";
+            var expected = "0.1234567890";
 
             // Act
             var actual = JsonConvert.SerializeObject(value, Formatting.None, new BasicsConverter());
@@ -55,7 +55,7 @@
         {
             // Arrange
             var value = 13.37;
-            var expected = "\"13.37\"";
+            var expected = "13.37";
 
             // Act
             var actual = JsonConvert.SerializeObject(value, Formatting.None, new BasicsConverter());
@@ -83,7 +83,7 @@
         {
             // Arrange
             var value = 42;
-            var expected = $"\"{value}\"";
+            var expected = $"{value}";
 
             // Act
             var actual = JsonConvert.SerializeObject(value, Formatting.None, new BasicsConverter());
@@ -111,7 +111,7 @@
         {
             // Arrange
             var value = long.MaxValue;
-            var expected = $"\"{value}\"";
+            var expected = $"{value}";
 
             // Act
             var actual = JsonConvert.SerializeObject(value, Formatting.None, new BasicsConverter());
@@ -166,8 +166,8 @@
         public void String_Can_Serialize()
         {
             // Arrange
-            var value = "testString";
-            var expected = $"\"\\\"{value}\\\"\"";
+            var value = "test\"String";
+            var expected = $"\"test\\\"String\"";
 
             // Act
             var actual = JsonConvert.SerializeObject(value, Formatting.None, new BasicsConverter());

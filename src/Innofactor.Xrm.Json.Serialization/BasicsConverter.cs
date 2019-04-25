@@ -1,6 +1,9 @@
 ﻿namespace Innofactor.Xrm.Json.Serialization
 {
     using System;
+    using System.CodeDom;
+    using System.CodeDom.Compiler;
+    using System.IO;
     using Newtonsoft.Json;
 
     public class BasicsConverter : JsonConverter
@@ -57,8 +60,28 @@
             return Finish(reader, reader.Value);
         }
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) =>
-            writer.WriteValue(value);
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            if (value.GetType() == typeof(string))
+            {
+                using (var converter = new StringWriter())
+                {
+                    using (var provider = CodeDomProvider.CreateProvider("CSharp"))
+                    {
+                        provider.GenerateCodeFromExpression(new CodePrimitiveExpression(value.ToString()), converter, null);
+                        writer.WriteRawValue(converter.ToString());
+                    }
+                }
+            }
+            else if (value.GetType() == typeof(object))
+            {
+                writer.WriteValue(JsonConvert.SerializeObject(value));
+            }
+            else
+            {
+                writer.WriteValue(value);
+            }
+        }
 
         #endregion Public Methods
 
