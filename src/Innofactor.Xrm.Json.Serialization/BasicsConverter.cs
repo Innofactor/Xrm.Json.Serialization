@@ -57,7 +57,8 @@
             return Finish(reader, reader.Value);
         }
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => writer.WriteValue(JsonConvert.SerializeObject(value));
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) =>
+            writer.WriteValue(value);
 
         #endregion Public Methods
 

@@ -28,8 +28,8 @@
 
             var expected = "{" +
                 $"\"_reference\":\"{name}:{id.ToString()}\"," +
-                "\"someString\":\"\\\"testString\\\"\"," +
-                $"\"someGuid\":\"\\\"{someGuid.ToString()}\\\"\"," +
+                "\"someString\":\"testString\"," +
+                $"\"someGuid\":\"{someGuid.ToString()}\"," +
                 $"\"{refEntName}\":{{\"_reference\":\"{refEntName}:{refEntId}\"}}," +
                 "\"attribute1\":{\"_option\":1}" +
                 "}";
