@@ -53,27 +53,15 @@
                             reader.Read();
                             break;
 
-                        case "_String":
+                        case "_moment":
                             // Skipping to property value of the object
-                            value = reader.ReadAsString();
+                            value = DateTime.Parse(reader.ReadAsString());
                             reader.Read();
                             break;
 
-                        case "_Int32":
+                        case "_id":
                             // Skipping to property value of the object
-                            value = (int)reader.ReadAsInt32();
-                            reader.Read();
-                            break;
-
-                        case "_Guid":
-                            // Skipping to property value of the object
-                            value = new Guid(reader.ReadAsString());
-                            reader.Read();
-                            break;
-
-                        case "_Double":
-                            // Skipping to property value of the object
-                            value = (double)reader.ReadAsDouble();
+                            value = Guid.Parse(reader.ReadAsString());
                             reader.Read();
                             break;
                     }

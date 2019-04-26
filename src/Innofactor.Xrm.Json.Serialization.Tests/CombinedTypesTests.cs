@@ -29,7 +29,7 @@
             var value = "{" +
                 $"\"_reference\":\"{name}:{id.ToString()}\"," +
                 "\"someString\":\"testString\"," +
-                $"\"someGuid\":\"{someGuid.ToString()}\"," +
+                $"\"someGuid\":{{\"_id\":\"{someGuid.ToString()}\"}}," +
                 $"\"{refEntName}\":{{\"_reference\":\"{refEntName}:{refEntId}\"}}," +
                 "\"attribute1\":{\"_option\":1}" +
                 "}";
@@ -41,7 +41,7 @@
             Assert.Equal(expected.LogicalName, actual.LogicalName);
             Assert.Equal(expected.Id, actual.Id);
             Assert.Equal(expected.Attributes["someString"], actual.Attributes["someString"]);
-            Assert.Equal(expected.Attributes["someGuid"].ToString(), actual.Attributes["someGuid"]);
+            Assert.Equal(expected.Attributes["someGuid"], actual.Attributes["someGuid"]);
             Assert.Equal((expected.Attributes[refEntName] as EntityReference).Id, (expected.Attributes[refEntName] as EntityReference).Id);
             Assert.Equal((expected.Attributes[refEntName] as EntityReference).LogicalName, (expected.Attributes[refEntName] as EntityReference).LogicalName);
             Assert.Equal((expected.Attributes["attribute1"] as OptionSetValue).Value, (actual.Attributes["attribute1"] as OptionSetValue).Value);
