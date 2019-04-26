@@ -12,8 +12,8 @@
         public void DateTime_Can_Deserialize()
         {
             // Arrange
-            var expected = DateTime.UtcNow;
-            var value = $"{{\"_moment\":\"{expected.ToString()}\"}}";
+            var expected = DateTime.Now;
+            var value = $"{{\"_moment\":\"{DateTimeConverter.Format(expected)}\"}}";
 
             // Act
             var actual = JsonConvert.DeserializeObject<DateTime>(value, new DateTimeConverter());
@@ -26,8 +26,8 @@
         public void DateTime_Can_Serialize()
         {
             // Arrange
-            var value = DateTime.UtcNow;
-            var expected = $"{{\"_moment\":\"{value.ToString()}\"}}";
+            var value = DateTime.Now;
+            var expected = $"{{\"_moment\":\"{DateTimeConverter.Format(value)}\"}}";
 
             // Act
             var actual = JsonConvert.SerializeObject(value, Formatting.None, new DateTimeConverter());

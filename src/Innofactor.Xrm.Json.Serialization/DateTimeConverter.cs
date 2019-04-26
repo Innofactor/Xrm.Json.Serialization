@@ -7,6 +7,17 @@
     {
         #region Public Methods
 
+        public static string Format(DateTime moment)
+        {
+            string offset(DateTime value)
+            {
+                var result = TimeZone.CurrentTimeZone.GetUtcOffset(value);
+                return ((result < TimeSpan.Zero) ? "-" : "+") + result.ToString("hhmm");
+            }
+
+            return moment.ToString("yyyy-MM-dd HH:mm:ss") + offset(moment);
+        }
+
         public override bool CanConvert(Type objectType) =>
             objectType == typeof(DateTime);
 
@@ -23,7 +34,7 @@
         {
             writer.WriteStartObject();
             writer.WritePropertyName("_moment");
-            writer.WriteValue(((DateTime)value).ToString());
+            writer.WriteValue(Format((DateTime)value));
             writer.WriteEndObject();
         }
 
