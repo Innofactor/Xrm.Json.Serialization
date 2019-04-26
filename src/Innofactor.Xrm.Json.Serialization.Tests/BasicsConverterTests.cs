@@ -1,4 +1,4 @@
-﻿namespace Xrm.Json.Serialization.Tests
+﻿namespace Innofactor.Xrm.Json.Serialization.Tests
 {
     using Innofactor.Xrm.Json.Serialization;
     using Newtonsoft.Json;

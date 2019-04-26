@@ -1,4 +1,4 @@
-﻿namespace Xrm.Json.Serialization.Tests
+﻿namespace Innofactor.Xrm.Json.Serialization.Tests
 {
     using System;
     using Innofactor.Xrm.Json.Serialization;

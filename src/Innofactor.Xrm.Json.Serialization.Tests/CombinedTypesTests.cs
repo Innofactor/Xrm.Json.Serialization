@@ -1,4 +1,4 @@
-﻿namespace Xrm.Json.Serialization.Tests
+﻿namespace Innofactor.Xrm.Json.Serialization.Tests
 {
     using System;
     using Innofactor.Xrm.Json.Serialization;
@@ -9,37 +9,6 @@
     public class CombinedTypesTests
     {
         #region Public Methods
-
-        [Fact]
-        public void Entity_Can_Serialize_With_Mixed_Types()
-        {
-            // Arrange
-            var name = "test";
-            var id = Guid.NewGuid();
-            var value = new Entity(name, id);
-
-            var someGuid = Guid.NewGuid();
-            var refEntName = "refEnt";
-            var refEntId = Guid.NewGuid();
-            value.Attributes.Add("someString", "testString");
-            value.Attributes.Add("someGuid", someGuid);
-            value.Attributes.Add(refEntName, new EntityReference(refEntName, refEntId));
-            value.Attributes.Add("attribute1", new OptionSetValue(1));
-
-            var expected = "{" +
-                $"\"_reference\":\"{name}:{id.ToString()}\"," +
-                "\"someString\":\"testString\"," +
-                $"\"someGuid\":\"{someGuid.ToString()}\"," +
-                $"\"{refEntName}\":{{\"_reference\":\"{refEntName}:{refEntId}\"}}," +
-                "\"attribute1\":{\"_option\":1}" +
-                "}";
-
-            // Act
-            var actual = JsonConvert.SerializeObject(value, Formatting.None, new EntityConverter());
-
-            // Assert
-            Assert.Equal(expected, actual);
-        }
 
         [Fact]
         public void Entity_Can_Deserialize_With_Mixed_Types()
@@ -76,6 +45,37 @@
             Assert.Equal((expected.Attributes[refEntName] as EntityReference).Id, (expected.Attributes[refEntName] as EntityReference).Id);
             Assert.Equal((expected.Attributes[refEntName] as EntityReference).LogicalName, (expected.Attributes[refEntName] as EntityReference).LogicalName);
             Assert.Equal((expected.Attributes["attribute1"] as OptionSetValue).Value, (actual.Attributes["attribute1"] as OptionSetValue).Value);
+        }
+
+        [Fact]
+        public void Entity_Can_Serialize_With_Mixed_Types()
+        {
+            // Arrange
+            var name = "test";
+            var id = Guid.NewGuid();
+            var value = new Entity(name, id);
+
+            var someGuid = Guid.NewGuid();
+            var refEntName = "refEnt";
+            var refEntId = Guid.NewGuid();
+            value.Attributes.Add("someString", "testString");
+            value.Attributes.Add("someGuid", someGuid);
+            value.Attributes.Add(refEntName, new EntityReference(refEntName, refEntId));
+            value.Attributes.Add("attribute1", new OptionSetValue(1));
+
+            var expected = "{" +
+                $"\"_reference\":\"{name}:{id.ToString()}\"," +
+                "\"someString\":\"testString\"," +
+                $"\"someGuid\":\"{someGuid.ToString()}\"," +
+                $"\"{refEntName}\":{{\"_reference\":\"{refEntName}:{refEntId}\"}}," +
+                "\"attribute1\":{\"_option\":1}" +
+                "}";
+
+            // Act
+            var actual = JsonConvert.SerializeObject(value, Formatting.None, new EntityConverter());
+
+            // Assert
+            Assert.Equal(expected, actual);
         }
 
         #endregion Public Methods
