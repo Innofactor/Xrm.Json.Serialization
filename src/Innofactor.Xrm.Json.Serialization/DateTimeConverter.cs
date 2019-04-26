@@ -1,27 +1,32 @@
 ﻿namespace Innofactor.Xrm.Json.Serialization
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Newtonsoft.Json;
 
     public class DateTimeConverter : JsonConverter
     {
-        public override bool CanConvert(Type objectType)
-        {
-            throw new NotImplementedException();
-        }
+        #region Public Methods
+
+        public override bool CanConvert(Type objectType) =>
+            objectType == typeof(DateTime);
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            throw new NotImplementedException();
+            reader.Read();
+            var value = DateTime.Parse(reader.ReadAsString());
+            reader.Read();
+
+            return value;
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            throw new NotImplementedException();
+            writer.WriteStartObject();
+            writer.WritePropertyName("_moment");
+            writer.WriteValue((((DateTime)value).ToString()));
+            writer.WriteEndObject();
         }
+
+        #endregion Public Methods
     }
 }

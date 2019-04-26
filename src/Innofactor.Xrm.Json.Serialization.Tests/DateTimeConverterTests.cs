@@ -13,13 +13,13 @@
         {
             // Arrange
             var expected = DateTime.UtcNow;
-            var value = $"{{\"_moment\": {expected.Ticks}}}";
+            var value = $"{{\"_moment\":\"{expected.ToString()}\"}}";
 
             // Act
             var actual = JsonConvert.DeserializeObject<DateTime>(value, new DateTimeConverter());
 
             // Assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected.ToString(), actual.ToString());
         }
 
         [Fact]
@@ -27,7 +27,7 @@
         {
             // Arrange
             var value = DateTime.UtcNow;
-            var expected = $"{{\"_moment\": {value.Ticks}}}";
+            var expected = $"{{\"_moment\":\"{value.ToString()}\"}}";
 
             // Act
             var actual = JsonConvert.SerializeObject(value, Formatting.None, new DateTimeConverter());
