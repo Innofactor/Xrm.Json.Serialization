@@ -83,6 +83,7 @@
     <Compile Include="EntityCollectionConverterTests.cs" />
     <Compile Include="EntityReferenceConverterTests.cs" />
     <Compile Include="EntityConverterTests.cs" />
+    <Compile Include="GuidConverterTests.cs" />
     <Compile Include="MoneyConverterTests.cs" />
     <Compile Include="OptionSetValueConverterTests.cs" />
     <Compile Include="BasicsConverterTests.cs" />

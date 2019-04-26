@@ -65,6 +65,7 @@
     <Compile Include="EntityCollectionConverter.cs" />
     <Compile Include="EntityConverter.cs" />
     <Compile Include="EntityReferenceConverter.cs" />
+    <Compile Include="GuidConverter.cs" />
     <Compile Include="MoneyConverter.cs" />
     <Compile Include="OptionSetValueConverter.cs" />
     <Compile Include="BasicsConverter.cs" />

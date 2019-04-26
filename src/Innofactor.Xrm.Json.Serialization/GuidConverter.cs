@@ -3,17 +3,17 @@
     using System;
     using Newtonsoft.Json;
 
-    public class DateTimeConverter : JsonConverter
+    public class GuidConverter : JsonConverter
     {
         #region Public Methods
 
         public override bool CanConvert(Type objectType) =>
-            objectType == typeof(DateTime);
+            objectType == typeof(Guid);
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             reader.Read();
-            var value = DateTime.Parse(reader.ReadAsString());
+            var value = Guid.Parse(reader.ReadAsString());
             reader.Read();
 
             return value;
@@ -22,8 +22,8 @@
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             writer.WriteStartObject();
-            writer.WritePropertyName("_moment");
-            writer.WriteValue(((DateTime)value).ToString());
+            writer.WritePropertyName("_id");
+            writer.WriteValue(((Guid)value).ToString());
             writer.WriteEndObject();
         }
 
