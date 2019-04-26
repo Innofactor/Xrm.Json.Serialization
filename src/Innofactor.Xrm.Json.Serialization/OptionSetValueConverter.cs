@@ -4,7 +4,7 @@
     using Microsoft.Xrm.Sdk;
     using Newtonsoft.Json;
 
-    public class OptionSetConvertor : JsonConverter
+    public class OptionSetConverter : JsonConverter
     {
         #region Public Methods
 

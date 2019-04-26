@@ -17,7 +17,7 @@
             var expected = new OptionSetValue(100);
 
             // Act
-            var actual = JsonConvert.DeserializeObject<OptionSetValue>(value, new OptionSetConvertor());
+            var actual = JsonConvert.DeserializeObject<OptionSetValue>(value, new OptionSetConverter());
 
             // Assert
             Assert.Equal(expected.Value, actual.Value);
@@ -31,7 +31,7 @@
             var expected = "{\"_option\":100}";
 
             // Act
-            var actual = JsonConvert.SerializeObject(value, Formatting.None, new OptionSetConvertor());
+            var actual = JsonConvert.SerializeObject(value, Formatting.None, new OptionSetConverter());
 
             // Assert
             Assert.Equal(expected, actual);

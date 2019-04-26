@@ -20,11 +20,12 @@
         {
             converters = new Dictionary<Type, JsonConverter>()
             {
-                { typeof(EntityCollection), new EntityCollectionConverter() },
+                { typeof(DateTime), new DateTimeConverter()},
                 { typeof(Entity), new EntityConverter() },
+                { typeof(EntityCollection), new EntityCollectionConverter() },
                 { typeof(EntityReference), new EntityReferenceConverter() },
                 { typeof(Money), new MoneyConverter() },
-                { typeof(OptionSetValue), new OptionSetConvertor()}
+                { typeof(OptionSetValue), new OptionSetConverter()}
             };
         }
 
