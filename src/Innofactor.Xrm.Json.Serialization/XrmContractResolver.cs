@@ -24,6 +24,7 @@
                 { typeof(Entity), new EntityConverter() },
                 { typeof(EntityCollection), new EntityCollectionConverter() },
                 { typeof(EntityReference), new EntityReferenceConverter() },
+                { typeof(Guid), new GuidConverter() },
                 { typeof(Money), new MoneyConverter() },
                 { typeof(OptionSetValue), new OptionSetConverter()}
             };
