@@ -1,5 +1,6 @@
 ﻿namespace Innofactor.Xrm.Json.Serialization.Tests
 {
+    using System.Globalization;
     using Innofactor.Xrm.Json.Serialization;
     using Newtonsoft.Json;
     using Xunit;
@@ -40,8 +41,8 @@
         public void Double_Can_Deserialize()
         {
             // Arrange
-            var expected = 13.37;
-            var value = $"{{\"testProp\":\"13.37\"}}";
+            var expected = 13.37d;
+            var value = $"{{\"testProp\":{expected.ToString(CultureInfo.InvariantCulture)}}}";
 
             // Act
             var actual = JsonConvert.DeserializeObject<double>(value, new BasicsConverter());
@@ -54,8 +55,8 @@
         public void Double_Can_Serialize()
         {
             // Arrange
-            var value = 13.37;
-            var expected = "13.37";
+            var value = 13.37f;
+            var expected = value.ToString(CultureInfo.InvariantCulture);
 
             // Act
             var actual = JsonConvert.SerializeObject(value, Formatting.None, new BasicsConverter());
@@ -69,7 +70,7 @@
         {
             // Arrange
             var expected = 42;
-            var value = $"{{\"testProp\":\"{expected}\"}}";
+            var value = $"{{\"testProp\":{expected}}}";
 
             // Act
             var actual = JsonConvert.DeserializeObject<int>(value, new BasicsConverter());
@@ -83,34 +84,6 @@
         {
             // Arrange
             var value = 42;
-            var expected = $"{value}";
-
-            // Act
-            var actual = JsonConvert.SerializeObject(value, Formatting.None, new BasicsConverter());
-
-            // Assert
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void Long_Can_Deserialize()
-        {
-            // Arrange
-            var expected = long.MaxValue;
-            var value = $"{{\"testProp\":\"{expected}\"}}";
-
-            // Act
-            var actual = JsonConvert.DeserializeObject<long>(value, new BasicsConverter());
-
-            // Assert
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void Long_Can_Serialize()
-        {
-            // Arrange
-            var value = long.MaxValue;
             var expected = $"{value}";
 
             // Act

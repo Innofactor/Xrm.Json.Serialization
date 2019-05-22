@@ -68,7 +68,29 @@
                 }
                 else
                 {
-                    value = serializer.Deserialize(reader);
+                    if (reader.Value.GetType() == typeof(long))
+                    {
+                        // Trying to downscale `long` to `int` if possible
+                        var temp = (long)reader.Value;
+
+                        if (temp > int.MaxValue || temp < int.MinValue)
+                        {
+                            value = (long)reader.Value;
+                        }
+                        else
+                        {
+                            value = unchecked((int)temp);
+                        }
+                    }
+                    else if (reader.Value.GetType() == typeof(float))
+                    {
+                        // Trying to upscale `float` to `double` 
+                        value = (double)reader.Value;
+                    }
+                    else
+                    {
+                        value = serializer.Deserialize(reader);
+                    }
                 }
 
                 entity.Attributes.Add(key, value);

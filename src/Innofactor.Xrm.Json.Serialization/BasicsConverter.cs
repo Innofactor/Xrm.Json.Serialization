@@ -30,23 +30,15 @@
                 return Finish(reader, reader.ReadAsString());
             }
 
-            if (objectType == typeof(int))
+            if (objectType == typeof(int) || objectType == typeof(long))
             {
+                // MS Dynamics CRM has no `long` type, only `int`
                 return Finish(reader, (int)reader.ReadAsInt32());
             }
 
-            if (objectType == typeof(long))
+            if (objectType == typeof(double) || objectType == typeof(float))
             {
-                return Finish(reader, long.Parse(reader.ReadAsString()));
-            }
-
-            if (objectType == typeof(float))
-            {
-                return Finish(reader, float.Parse(reader.ReadAsString()));
-            }
-
-            if (objectType == typeof(double))
-            {
+                // MS Dynamics CRM has no `float` type, only `double`
                 return Finish(reader, (double)reader.ReadAsDouble());
             }
 
