@@ -52,6 +52,21 @@
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public void Entity_Can_Detect_Incorrect_Attribute_During_Deserialize()
+        {
+            // Arrange
+            var name = "test";
+            var id = Guid.NewGuid();
+            var value = $"{{\"_reference\":\"{name}:{id}\",\"attribute1\":}}"; ;
+
+            // Act
+            var ex = Assert.Throws<JsonException>(() => JsonConvert.DeserializeObject<Entity>(value, new EntityConverter()));
+
+            // Assert
+            Assert.Contains("attribute1", ex.Message);
+        }
+
         #endregion Public Methods
     }
 }
