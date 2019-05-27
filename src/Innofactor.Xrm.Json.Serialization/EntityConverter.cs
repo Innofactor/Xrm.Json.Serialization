@@ -88,7 +88,7 @@
                         }
                         else if (reader.Value.GetType() == typeof(float))
                         {
-                            // Trying to upscale `float` to `double` 
+                            // Trying to upscale `float` to `double`
                             value = (double)reader.Value;
                         }
                         else
@@ -105,7 +105,7 @@
             }
             catch (Exception ex)
             {
-                throw new JsonException($"Error deserializing property {key}", ex);
+                throw new JsonException($"Error deserializing property `{key}`", ex);
             }
 
             return entity;
@@ -123,8 +123,12 @@
 
             foreach (var attribute in entity?.Attributes)
             {
-                writer.WritePropertyName(attribute.Key);
-                serializer.Serialize(writer, attribute.Value);
+                if (attribute.Value != null)
+                {
+                    // If attribute is set to `null` that is equivalent to removing attribute from collection
+                    writer.WritePropertyName(attribute.Key);
+                    serializer.Serialize(writer, attribute.Value);
+                }
             }
 
             writer.WriteEndObject();

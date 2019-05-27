@@ -34,6 +34,38 @@
         }
 
         [Fact]
+        public void Entity_Can_Remove_Empty_Attribute_During_Serialize()
+        {
+            // Arrange
+            var name = "test";
+            var id = Guid.NewGuid();
+            var value = new Entity(name, id);
+            value.Attributes.Add("attribute1", null);
+            var expected = $"{{\"_reference\":\"{name}:{id}\"}}"; ;
+
+            // Act
+            var actual = JsonConvert.SerializeObject(value, Formatting.None, new EntityConverter());
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Entity_Can_Report_Incorrect_Attribute_During_Deserialize()
+        {
+            // Arrange
+            var name = "test";
+            var id = Guid.NewGuid();
+            var value = $"{{\"_reference\":\"{name}:{id}\",\"attribute1\":}}"; // Intentional error: value of `attribute1` is missing!
+
+            // Act
+            var ex = Assert.Throws<JsonException>(() => JsonConvert.DeserializeObject<Entity>(value, new EntityConverter()));
+
+            // Assert
+            Assert.Contains("attribute1", ex.Message);
+        }
+
+        [Fact]
         public void Entity_Can_Serialize()
         {
             // Arrange
@@ -50,21 +82,6 @@
 
             // Assert
             Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void Entity_Can_Detect_Incorrect_Attribute_During_Deserialize()
-        {
-            // Arrange
-            var name = "test";
-            var id = Guid.NewGuid();
-            var value = $"{{\"_reference\":\"{name}:{id}\",\"attribute1\":}}"; ;
-
-            // Act
-            var ex = Assert.Throws<JsonException>(() => JsonConvert.DeserializeObject<Entity>(value, new EntityConverter()));
-
-            // Assert
-            Assert.Contains("attribute1", ex.Message);
         }
 
         #endregion Public Methods
