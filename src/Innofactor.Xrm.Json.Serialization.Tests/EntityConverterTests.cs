@@ -75,7 +75,8 @@
             value.Attributes.Add("attribute1", new OptionSetValue(1));
             value.Attributes.Add("attribute2", 2);
             value.Attributes.Add("attribute3", 13.37d);
-            var expected = $"{{\"_reference\":\"{name}:{id.ToString()}\",\"attribute1\":{{\"_option\":1}},\"attribute2\":2,\"attribute3\":13.37}}";
+            value.Attributes.Add("attribute4", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            var expected = $"{{\"_reference\":\"{name}:{id.ToString()}\",\"attribute1\":{{\"_option\":1}},\"attribute2\":2,\"attribute3\":13.37,\"attribute4\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}}";
 
             // Act
             var actual = JsonConvert.SerializeObject(value, Formatting.None, new EntityConverter());
