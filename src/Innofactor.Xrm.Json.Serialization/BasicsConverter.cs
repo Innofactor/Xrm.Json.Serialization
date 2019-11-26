@@ -60,7 +60,7 @@
                 {
                     using (var provider = CodeDomProvider.CreateProvider("CSharp"))
                     {
-                        provider.GenerateCodeFromExpression(new CodePrimitiveExpression(value.ToString()), converter, null);
+                        provider.GenerateCodeFromExpression(new CodeSnippetExpression($"\"{value}\""), converter, null);
                         writer.WriteRawValue(converter.ToString());
                     }
                 }
