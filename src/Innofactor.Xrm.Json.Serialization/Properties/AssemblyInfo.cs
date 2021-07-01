@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Innofactor.Xrm.Json.Serialization")]
-[assembly: AssemblyCopyright("Copyright © Innofactor AB 2019")]
+[assembly: AssemblyCopyright("Copyright © Innofactor AB 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

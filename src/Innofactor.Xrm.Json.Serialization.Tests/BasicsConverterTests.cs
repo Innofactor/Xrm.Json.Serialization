@@ -140,7 +140,7 @@
         {
             // Arrange
             var value = "test\"String";
-            var expected = $"\"test\\\"String\"";
+            var expected = $"\"test\"String\"";
 
             // Act
             var actual = JsonConvert.SerializeObject(value, Formatting.None, new BasicsConverter());
