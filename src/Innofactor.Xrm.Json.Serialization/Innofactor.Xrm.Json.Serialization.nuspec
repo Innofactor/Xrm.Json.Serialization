@@ -4,7 +4,7 @@
     <id>Xrm.Json.Serialization</id>
     <version>1.0.0</version>
     <title>Xrm.Json.Serialization</title>
-    <authors>Alexey Shytikov</authors>
+    <authors>Alexey Shytikov and Imran Akram</authors>
     <owners>Innofactor AB</owners>
     <projectUrl>https://github.com/Innofactor/Xrm.Json.Serialization</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
