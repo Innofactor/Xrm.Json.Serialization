@@ -10,7 +10,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
     <description>Compact JSON serialization for Microsoft Dynamics 365/CRM/Dataverse entities</description>
-    <copyright>Copyright © Innofactor AB 2021</copyright>
+    <copyright>Copyright © Innofactor AB 2022</copyright>
 	<iconUrl>https://www.innofactor.com/globalassets/other-sizes/innofactor-small-logo.png</iconUrl>
   </metadata>
 </package>
